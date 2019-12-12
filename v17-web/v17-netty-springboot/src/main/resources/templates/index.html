@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>websocket通讯演示案例</title>
+</head>
+<body>
+<h3>发送消息</h3>
+<input type="text" id="msg"/>
+<input type="button" value="发送消息" id="sendMsg"/>
+<h3>接收消息</h3>
+<div id="receiveMsg" style="background-color: lightblue;">
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="application/javascript" >
+
+		$(function() { //判断当前浏览器是否支持websocket
+			var socket;
+			if (window.WebSocket) { //实例化webSocket
+				socket = new WebSocket("ws://localhost:8888/ws");
+				//设置websocket的各个生命周期方法
+				socket.onopen = function () {
+					console.log("跟服务器已经建立连接");
+					//主动发送当前的用户信息给到服务端
+					socket.send("{\"msgType\":1,\"data\":\"101\"}");
+					//周期性的发心跳包
+					setInterval(function(){ socket.send("{\"msgType\":2}"); },3000);
+				};
+				socket.onclose = function() {
+				    console.log("与服务端断开了连接");
+				}
+				socket.onmessage = function (e) {
+					console.log(e);
+					var info = e.data;
+					var html = $("#receiveMsg").html();
+					$("#receiveMsg").html(html+"<br/>"+info);
+				}
+			} else {
+				alert("当前浏览器不支持webSocket，请升级！");
+			}
+			//绑定事件
+			$("#sendMsg").click(function () {
+				var msg = $("#msg").val();
+				socket.send(msg);
+			})
+		})
+</script>
+</body>
+</html>

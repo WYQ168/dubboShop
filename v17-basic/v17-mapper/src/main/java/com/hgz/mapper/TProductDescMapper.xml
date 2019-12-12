@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgz.mapper.TProductDescMapper">
+  <resultMap id="BaseResultMap" type="com.hgz.entity.TProductDesc">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="product_desc" jdbcType="VARCHAR" property="productDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, product_id, product_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_product_desc
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_product_desc
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hgz.entity.TProductDesc" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_product_desc (product_id, product_desc)
+    values (#{productId,jdbcType=BIGINT}, #{productDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hgz.entity.TProductDesc" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_product_desc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productDesc != null">
+        product_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productDesc != null">
+        #{productDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hgz.entity.TProductDesc">
+    <!--@mbg.generated-->
+    update t_product_desc
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="productDesc != null">
+        product_desc = #{productDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hgz.entity.TProductDesc">
+    <!--@mbg.generated-->
+    update t_product_desc
+    set product_id = #{productId,jdbcType=BIGINT},
+      product_desc = #{productDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+    <select id="selectByProductId" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from t_product_desc where product_id=#{id}
+    </select>
+    <update id="updateByProductId" >
+        update t_product_desc
+        set  product_desc = #{productDesc}
+        where product_id = #{id}
+    </update>
+
+</mapper>

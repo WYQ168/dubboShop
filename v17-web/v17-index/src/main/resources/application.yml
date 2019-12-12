@@ -1,0 +1,29 @@
+dubbo:
+  application:
+    name: web-index
+  registry:
+    protocol: zookeeper
+    address: 193.112.19.133:2181
+server:
+  port: 9091
+spring:
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  rabbitmq:
+    host: 193.112.19.133
+    port: 5672
+    username: java1907
+    password: 123
+    virtual-host: java1907
+  redis:
+    host: 193.112.19.133
+    port: 6379
+    password: java1907
+    jedis:
+      pool:
+        max-active: 66
+
+

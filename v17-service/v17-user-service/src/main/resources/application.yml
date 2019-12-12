@@ -1,0 +1,42 @@
+spring:
+  data:
+    solr:
+      host: http://193.112.19.133:8080/solr
+  redis:
+    host: 193.112.19.133
+    port: 6379
+    password: java1907
+    jedis:
+      pool:
+        max-active: 66
+  rabbitmq:
+    host: 193.112.19.133
+    port: 5672
+    username: java1907
+    password: 123
+    virtual-host: java1907
+  datasource:
+    url: jdbc:mysql://localhost:3306/v17?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: URzcMgHlrl65k6kxP66PFvPvkKjrlGWO+UUjDuh2X+nTX/L0p0s5OYu3tdjeXpgkhTEHxMWhIKJALZfMSE5w7g==
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=${public-key}
+
+public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIzi/Ow/+39PL89d+e0fkElx8HfbZq4NI3lu9nzIETa5vTYl1N41RlQJiUWpB/vY5CVOwoVd+JuuBYv39O4/2H0CAwEAAQ==
+dubbo:
+  application:
+    name: user-service
+  registry:
+    protocol: zookeeper
+    address: 193.112.19.133:2181
+  protocol:
+    port: 28815
+server:
+  port: 8093

@@ -1,0 +1,14 @@
+# Project exclude paths
+/v17-api/v17-cart-api/target/
+/v17-api/v17-mail-api/target/
+/v17-api/v17-product-api/target/
+/v17-api/v17-search-api/target/
+/v17-api/v17-sms-api/target/
+/v17-api/v17-user-api/target/
+/v17-basic/v17-commons/target/
+/v17-basic/v17-entity/target/
+/v17-basic/v17-mapper/target/
+/v17-temp/v17-aliyun-sms/target/
+/v17-temp/v17-rabbirmq-java/target/
+/v17-temp/v17-redisTest/target/
+/v17-web/v17-netty/target/

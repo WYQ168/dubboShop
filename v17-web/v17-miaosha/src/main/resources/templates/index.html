@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base href="/"/>
+    <title>Title</title>
+</head>
+<body>
+<input type="hidden" id="secKillId" th:value="${product.id}"/>
+名称：<span th:text="${product.getProductName()}"></span><br/>
+原价：<span th:text="${product.getProductPrice()}"></span><br/>
+秒杀价：<span th:text="${product.getSalePrice()}"></span><br/>
+<input type="button" value="立即抢购" id="kill"><br/>
+
+活动id：<input type="text" id="txseckillId"/><br/>
+用户id: <input type="text" id="userId"/><br/>
+<input type="button" id="remind" value="秒杀提醒"/>
+
+<script src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+    $("#remind").click(function(){
+        var txseckillId = $("#txseckillId").val();
+        var userId = $("#userId").val();
+        $.ajax({
+            url:"remind/add/"+txseckillId+"/"+userId,
+            success : function(result){
+                console.log(result);
+            }
+        })
+    })
+
+    $("#kill").click(function(){
+        var secKillId =$("#secKillId").val();
+        $.ajax({
+            url :"miaosha/getPath?userId=1&secKillId="+secKillId,
+            success : function(result){
+                if(result.statusCode == 200){
+                        var path =result.data;
+                }
+            }
+        })
+    })
+})
+
+
+</script>
+</body>
+</html>
