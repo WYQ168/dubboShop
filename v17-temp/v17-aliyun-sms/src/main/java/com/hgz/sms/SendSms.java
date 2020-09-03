@@ -17,7 +17,7 @@ public class SendSms {
 
 
     public static SMSResponse sendCodeMessage(String phone,String code){
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4FgrwNeNtBStecYBYMz6", "o66g0xJlcLfUVCWIu3rrlHRFSKMjlc");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangWYQzhou", "LTAI4FgrwNeNtBStecYBYMzWYQ6", "WYQo66g0xJlcLfUVWYQCWIu3rrlHRFSWYQKMjlc");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
